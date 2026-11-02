@@ -3,7 +3,7 @@
 # important variables
 declare -ia board    # array that keeps track of game status
 declare -i pieces    # number of pieces present on board
-declare -i score=0   # score variable
+declare -i score=2   # score variable
 declare -i flag_skip # flag that prevents doing more than one operation on
                      # single field in one step
 declare -i moves     # stores number of possible moves to determine if player lost
@@ -155,7 +155,7 @@ function push_pieces {
       board[$second]=0
       (( pieces-- ))
       (( change=1 ))
-      (( score += board[first] ))
+      (( score += board[first] * 2 ))
       printf "joined piece from [%d] with [%d], new value=%d\n" \
         "$second" "$first" "${board[$first]}" >&3
     else
